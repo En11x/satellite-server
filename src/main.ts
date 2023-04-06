@@ -4,11 +4,12 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
   const config = new DocumentBuilder()
     .setTitle('trusher-server')
     .setDescription('A server end for trusher')
     .setVersion('1.0')
-    .addTag('first')
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
